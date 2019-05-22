@@ -244,7 +244,7 @@ a.social{
 .link-direto-wapp{
   display: none;
 }
-@media only screen and (max-width: 321px) {
+@media only screen and (max-width: 400px) {
     html{
       overflow-x: hidden;
     }
@@ -334,7 +334,7 @@ a.social{
     top: 43px;
 }
   /*Nav Mobile*/
-  @media only screen and (max-width: 321px) {
+  @media only screen and (max-width: 400px) {
     .container{
       padding:10px;
     }
@@ -386,7 +386,7 @@ a.social{
 }
 
 /*BANNER MOBILE*/
-  @media only screen and (max-width: 321px) {
+  @media only screen and (max-width: 400px) {
       #banner{
             min-height: 600px;
       }
@@ -459,7 +459,7 @@ p.paragrafo-sobre::before {
   }
 
 /*SOBRE MOBILE*/
-@media only screen and (max-width: 321px) {
+@media only screen and (max-width: 400px) {
   #sobre{
     margin-top: 20px;
     height: 560px;
@@ -606,7 +606,7 @@ p.paragrafo-sobre::before {
   }
 
   /*SERVICOS MOBILE*/
-  @media only screen and (max-width: 321px) {
+  @media only screen and (max-width: 400px) {
     #servicos{
       height:  610px;
     }
@@ -720,7 +720,7 @@ p.paragrafo-sobre::before {
 }
 
 /*PRECOS MOBILE*/
-@media only screen and (max-width: 321px) {
+@media only screen and (max-width: 400px) {
   #precos{
     height: 780px;
   }
@@ -833,7 +833,7 @@ p.paragrafo-sobre::before {
 }
 
 /*CONTATO MOBILE*/
-@media only screen and (max-width: 321px) {
+@media only screen and (max-width: 400px) {
   .formulario{
     flex-wrap: wrap;
   }
@@ -900,7 +900,7 @@ p.paragrafo-sobre::before {
   width: 33.333333333%;
 }
 /*MOBILE FOOTER*/
-@media only screen and (max-width: 321px) {
+@media only screen and (max-width: 400px) {
   #footer{
     font-size: 16px;
     text-align: center;
