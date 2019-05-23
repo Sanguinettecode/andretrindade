@@ -612,6 +612,20 @@ p.paragrafo-sobre::before {
     }
     .item-servico{
           margin-top: 20px;
+          height: 540px;
+    }
+    .quadro-servico{
+          height: 540px;
+    }
+    .descricao-servico{
+      width: 90%;
+      align-self: center;
+      right: 20px;
+      text-align: center;
+      top: 384px;
+    }
+    .title-servico{
+          margin-top: 110px;
     }
     .title-servico::before {
       left: 40px;
@@ -726,10 +740,11 @@ p.paragrafo-sobre::before {
   }
   .precos{
     margin-bottom: 20px;
+    margin-top: 77px;
   }
   #precos .item{
     width: 100%;
-    height: 578px;
+    height: 530px;
   }
   .container-item-preco{
     top: 35px;

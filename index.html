@@ -5,7 +5,7 @@
 	<title>André Trindade</title>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, target-densityDpi=device-dpi" />
-	
+	<link href="./favicon.ico" rel="shortcut icon" type="image/x-icon" />
 	<link rel="stylesheet" href="./assets/css/style.css">
 	<link rel="stylesheet" href="owlcarousel/owl.carousel.min.css">
 	<link rel="stylesheet" href="owlcarousel/owl.theme.default.min.css">
@@ -237,9 +237,9 @@
 				<input id="telefone" placeholder="TELEFONE" name="telefone" type="text">
 				<input id="email" placeholder="EMAIL (Opcional)" name="email" type="text">
 				<label style="display: none;" class="nao-aparece">Se você não é um robô, deixe em branco.</label>
-				<input style="display: none;" type="text" class="nao-aparece" name="leaveblank">
+				<input style="display: none;" type="text" class="nao-aparece" id="leaveblank" name="leaveblank">
 				<label style="display: none;" class="nao-aparece">Se você não é um robô, não mude este campo.</label>
-				<input style="display: none;" type="text" class="nao-aparece" name="dontchange" value="http://" >
+				<input style="display: none;" type="text" class="nao-aparece" id="dontchange" name="dontchange" value="http://" >
 
 				<textarea placeholder="SUA MENSAGEM" name="mensagem" rows="5" id="mensagem"></textarea>
 				
@@ -293,23 +293,40 @@
 	      e.preventDefault();
 	      $(".mensagem-modal").children().remove();
 	      $(this).attr("disabled", true);
-	    
-	      var dados = $("form").serialize();
-	      $.ajax({
-	          url: "enviar.php",
-	          method: "POST",
-	          dataType: "HTML",
-	          data: dados 
-	      }).done(function(retorno){
-	      	mostrar()
-	      	$(".mensagem-modal").append('<h3>'+retorno+'</h3><br><p>Retornarei o contato o mais breve possível. Grande abraço</p>')
-	      	$(".btn-enviar").removeAttr("disabled");
-	           $("#form-andre").trigger("reset");
-	      }).fail(function(retorno){
-	      	alert(retorno)
-	      	$(".btn-enviar").removeAttr("disabled");
-	           $(".msg_retorno").html(retorno);
-	      });  
+	    	
+	    	var nome = $("#nome").val();
+	    	var dontchange = $("#dontchange").val();
+	    	var leaveblank = $("#leaveblank").val();
+	    	var telefone = $("#telefone").val();
+	    	var mensagem = $("#mensagem").val();
+
+	    	if(nome == "" || telefone == "" || mensagem == "" || dontchange != 'http://' || leaveblank != '' ){
+	    		mostrar()
+	      		$(".mensagem-modal").append('<h2>Ops! Pera aí</h2><br><p>Precisamos conversar ... <br><br>Preciso do seu <strong>nome</strong> e <strong>telefone</strong> para retornar o seu contato.</p>')
+	    	}else if(dontchange != 'http://' || leaveblank != ''){
+	    		mostrar()
+	      		$(".mensagem-modal").append('<h2>Não Passarás</h2>')
+	    		$(".btn-enviar").removeAttr("disabled");
+	    	}else{
+
+	    		var dados = $("form").serialize();
+			      $.ajax({
+			          url: "enviar.php",
+			          method: "POST",
+			          dataType: "HTML",
+			          data: dados 
+			      }).done(function(retorno){
+			      	mostrar()
+			      	$(".mensagem-modal").append('<h3>'+retorno+'</h3><br><p>Retornarei o contato o mais breve possível. Grande abraço</p>')
+			      	$(".btn-enviar").removeAttr("disabled");
+			           $("#form-andre").trigger("reset");
+			      }).fail(function(retorno){
+			      	alert('Encontramos dificuldade no envio do email: Por favor entre em contato através do email: sanguinettecode@gmail.com')
+			      	$(".btn-enviar").removeAttr("disabled");
+			           $(".msg_retorno").html(retorno);
+			      });
+
+	    	}  
 	  });
 	});
 
@@ -325,6 +342,9 @@
 	$('#precos  .owl-carousel').owlCarousel({
     loop:true,
     margin:0,
+    autoplay:true,
+    autoplayTimeout:4000,
+    autoplayHoverPause:true,
     responsive:{
 	        0:{
 	            items:1
@@ -342,6 +362,9 @@
 	center:true,
     loop:true,
     margin:0,
+    autoplay:true,
+    autoplayTimeout:4000,
+    autoplayHoverPause:true,
     responsive:{
 	        0:{
 	            items:1,
